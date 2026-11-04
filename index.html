@@ -146,7 +146,9 @@
   </div>
 </div>
 
-<!-- [계좌 목록 화면] -->
+<!-- =========================================
+     [전체 계좌 목록 화면: 980만원 줄바꿈 해결 & 불필요 문구 제거]
+     ========================================= -->
 <div id="screen-list" class="screen">
   <div class="nav-header">
     <div style="display:flex;align-items:center;gap:10px;">
@@ -154,24 +156,40 @@
       <span style="font-size:18px;font-weight:800;">전체 계좌</span>
     </div>
   </div>
+
+  <!-- 입출금 카드 -->
   <div class="app-card" style="margin-top:14px;">
     <div class="card-head-row"><div style="font-size:16px;font-weight:800;color:#191f28;">입출금 <span style="color:var(--primary);">1</span></div><div style="font-size:13px;color:#8b95a1;">총 잔액 14,300원</div></div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;" onclick="openDetailWithDelay('checking')">
-      <div style="display:flex;gap:12px;align-items:center;">
+      <div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
         <div class="shinhan-logo-badge">S</div>
-        <div><div style="font-size:14.5px;font-weight:700;color:#191f28;">[한도계좌1] U드림 저축예금</div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">신한 110-363-575313</div></div>
+        <div style="min-width:0;">
+          <div style="font-size:14.5px;font-weight:700;color:#191f28;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">[한도계좌1] U드림 저축예금</div>
+          <div style="font-size:12px;color:#8b95a1;margin-top:2px;">신한 110-363-575313</div>
+        </div>
       </div>
-      <div style="text-align:right;"><div style="font-size:16px;font-weight:800;color:#191f28;">14,300원</div><button style="margin-top:4px;background:#eef3ff;color:var(--primary);border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">이체</button></div>
+      <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+        <div style="font-size:16px;font-weight:800;color:#191f28;white-space:nowrap;">14,300원</div>
+        <button style="margin-top:4px;background:#eef3ff;color:var(--primary);border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">이체</button>
+      </div>
     </div>
   </div>
+
+  <!-- 적금 카드: 자유적립식 뱃지/25일 문구 제거, 980만원 줄바꿈 방지(white-space:nowrap) -->
   <div class="app-card">
     <div class="card-head-row"><div style="font-size:16px;font-weight:800;color:#191f28;">적금 · 청약 <span style="color:var(--primary);">1</span></div><div style="font-size:13px;color:#8b95a1;">총 납입잔액 9,800,000원</div></div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;" onclick="openDetailWithDelay('youth')">
-      <div style="display:flex;gap:12px;align-items:center;">
+      <div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
         <div class="shinhan-logo-badge" style="background:linear-gradient(135deg,#0070f3 0%,#004599 100%);">S</div>
-        <div><div style="font-size:14.5px;font-weight:700;color:#191f28;display:flex;align-items:center;gap:6px;"><span>신한 청년도약계좌</span><span style="background:#eef3ff;color:var(--primary);font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;">자유적립식</span></div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">신한 220-810-948211 · 25일 자동이체</div></div>
+        <div style="min-width:0;">
+          <div style="font-size:14.5px;font-weight:700;color:#191f28;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">신한 청년도약계좌</div>
+          <div style="font-size:12px;color:#8b95a1;margin-top:2px;">신한 220-810-948211</div>
+        </div>
       </div>
-      <div style="text-align:right;"><div style="font-size:16px;font-weight:800;color:#191f28;">9,800,000원</div><button style="margin-top:4px;background:#eef3ff;color:var(--primary);border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">입금</button></div>
+      <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+        <div style="font-size:16px;font-weight:800;color:#191f28;white-space:nowrap;">9,800,000원</div>
+        <button style="margin-top:4px;background:#eef3ff;color:var(--primary);border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">입금</button>
+      </div>
     </div>
   </div>
 </div>
@@ -217,7 +235,6 @@
   </div>
 </div>
 
-<!-- 0.5초 로딩 인디케이터 -->
 <div class="network-spinner-modal" id="network-spinner"><div class="ios-spinner"></div></div>
 
 </div>
@@ -233,7 +250,7 @@ const accountData={
     ]
   },
   youth:{
-    badge:"정기적금",name:"신한 청년도약계좌 (자유적립식)",number:"신한 220-810-948211",balance:"9,800,000원",isYouth:true,
+    badge:"정기적금",name:"신한 청년도약계좌",number:"신한 220-810-948211",balance:"9,800,000원",isYouth:true,
     history:[
       {date:"2026.10.25",desc:"14회차 자동이체 납입",time:"14:28",amount:"+700,000원",after:"9,800,000원",isPlus:true},
       {date:"2026.09.25",desc:"13회차 자동이체 납입",time:"16:05",amount:"+700,000원",after:"9,100,000원",isPlus:true},
