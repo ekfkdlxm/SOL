@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>신한 SOL뱅크</title>
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="신한 SOL">
+
+  <style>
+    :root {
+      --primary: #0854c4;
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --text-main: #191f28;
+      --text-sub: #8b95a1;
+      --text-blue: #0854c4;
+      --line: #eef0f3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .app-viewport {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      background-color: var(--bg);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .screen {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      padding-bottom: 85px;
+    }
+    .screen.active {
+      display: flex;
+    }
+
+    /* 공통 헤더 */
+    .nav-header {
+      padding: 14px 20px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      color: var(--text-main);
+    }
+    .header-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    /* 상단 서브 탭 (스크롤형/고정형) */
+    .sub-nav-tabs {
+      display: flex;
+      gap: 20px;
+      padding: 10px 20px 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .sub-nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .sub-tab-item {
+      font-size: 15px;
+      font-weight: 500;
+      color: #8b95a1;
+      padding-bottom: 10px;
+      position: relative;
+      cursor: pointer;
+    }
+    .sub-tab-item.active {
+      color: #191f28;
+      font-weight: 700;
+    }
+    .sub-tab-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: #191f28;
+      border-radius: 2px;
+    }
+
+    /* =========================================
+       1. 홈 화면
+       ========================================= */
+    .home-header {
+      padding: 16px 20px 12px;
+      background: linear-gradient(180deg, #eef3ff 0%, #f4f6fb 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--text-main);
+    }
+    .user-badge {
+      width: 24px;
+      height: 24px;
+      background: #fbc02d;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .home-banner {
+      margin: 12px 18px;
+      padding: 16px;
+      background: #ffffff;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      cursor: pointer;
+    }
+    .banner-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+    .banner-link {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 4px;
+      display: block;
+    }
+    .quick-service-grid {
+      margin: 0 18px 16px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .quick-btn {
+      background: #ffffff;
+      border: 1px solid #eef0f4;
+      border-radius: 14px;
+      padding: 14px 6px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .quick-btn .icon { font-size: 20px; }
+    .quick-btn .txt { font-size: 12px; font-weight: 600; color: #4e5968; }
+
+    /* =========================================
+       2. 금융 탭 화면 (스크린샷 1 디테일)
+       ========================================= */
+    .finance-sub-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+    }
+    .amount-toggle-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4e5968;
+    }
+    .toggle-w-btn {
+      width: 44px;
+      height: 24px;
+      background: #0854c4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      justify-content: flex-end;
+      cursor: pointer;
+    }
+    .toggle-w-circle {
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      color: #0854c4;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .finance-card {
+      background: #ffffff;
+      margin: 0 16px 14px;
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .finance-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .finance-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .link-all-acc {
+      font-size: 13px;
+      color: #6b7684;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .acc-item-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .shinhan-badge-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0854c4;
+      color: white;
+      font-weight: 900;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .acc-type-tag {
+      font-size: 14px;
+      font-weight: 700;
+      color: #191f28;
+    }
+    .acc-fullname {
+      font-size: 14px;
+      color: #4e5968;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 200px;
+    }
+    .acc-num-copy {
+      font-size: 12px;
+      color: #8b95a1;
+      margin-left: 42px;
+      margin-bottom: 12px;
+    }
+    .acc-big-balance {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-left: 42px;
+      margin-bottom: 16px;
+    }
+    .btn-finance-transfer {
+      width: 100%;
+      background: #eef3ff;
+      color: #0854c4;
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /* 최근 송금 캐러셀 */
+    .recent-transfer-carousel {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .recent-transfer-carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .recent-user-chip {
+      background: #f7f9fa;
+      border-radius: 20px;
+      padding: 7px 12px 7px 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .bank-mini-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      color: white;
+      font-size: 9px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .recent-chip-info .r-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #333d4b;
+    }
+    .recent-chip-info .r-amt {
+      font-size: 11px;
+      color: #8b95a1;
+    }
+
+    /* 퇴직연금 배너 */
+    .retire-banner-box {
+      margin: 4px 16px 14px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      cursor: pointer;
+    }
+    .retire-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .retire-link {
+      font-size: 13px;
+      color: #0854c4;
+      margin-top: 6px;
+      display: block;
+      font-weight: 600;
+    }
+
+    /* =========================================
+       3. 상품 탭 화면 (스크린샷 2 디테일)
+       ========================================= */
+    .product-search-box {
+      margin: 16px 18px 12px;
+      background: #ffffff;
+      border: 1.5px solid #2b70f0;
+      border-radius: 26px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(43, 112, 240, 0.08);
+      cursor: pointer;
+    }
+    .product-search-placeholder {
+      font-size: 14px;
+      color: #4e5968;
+      font-weight: 500;
+    }
+
+    .product-section-card {
+      background: #ffffff;
+      margin: 0 16px 14px;
+      border-radius: 22px;
+      padding: 20px;
+    }
+    .product-section-card .title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #191f28;
+      margin-bottom: 16px;
+    }
+    .product-list-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f6f7f9;
+      cursor: pointer;
+    }
+    .product-list-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .prod-icon-sq {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #f0f4fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .prod-content {
+      flex: 1;
+    }
+    .prod-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #191f28;
+    }
+    .prod-desc {
+      font-size: 13px;
+      color: #8b95a1;
+      margin-top: 3px;
+    }
+
+    /* =========================================
+       4. 혜택 탭 화면 (스크린샷 3 디테일)
+       ========================================= */
+    .point-card-hero {
+      margin: 12px 16px 14px;
+      background: linear-gradient(135deg, #448aff 0%, #2979ff 100%);
+      border-radius: 24px;
+      padding: 20px 20px 14px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .point-badge-txt {
+      font-size: 13px;
+      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .point-big-val {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .bear-illust {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      width: 72px;
+      height: 72px;
+      font-size: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .point-inner-white-box {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: #191f28;
+    }
+    .point-sub-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #f6f7f9;
+      cursor: pointer;
+    }
+    .point-sub-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .point-sub-row:first-child {
+      padding-top: 0;
+    }
+    .point-row-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333d4b;
+    }
+    .point-row-val {
+      font-size: 13px;
+      color: #6b7684;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .gold-m-badge {
+      width: 17px;
+      height: 17px;
+      background: #fbc02d;
+      color: white;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .benefit-check-list {
+      background: #ffffff;
+      margin: 0 16px 14px;
+      border-radius: 22px;
+      padding: 20px;
+    }
+    .benefit-check-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #191f28;
+      margin-bottom: 14px;
+    }
+    .benefit-action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f8f9fa;
+    }
+    .benefit-action-row:last-child {
+      border-bottom: none;
+    }
+    .benefit-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-participate {
+      background: #f2f4f6;
+      color: #4e5968;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* =========================================
+       5. 전체 계좌 목록 & 상세 화면
+       ========================================= */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    .filter-tab {
+      padding: 7px 14px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-sub);
+      background: #f2f4f6;
+      border: none;
+      cursor: pointer;
+    }
+    .filter-tab.active {
+      background: #191f28;
+      color: #fff;
+    }
+    .account-section {
+      background: #ffffff;
+      margin-top: 10px;
+      padding: 16px 20px;
+    }
+    .section-title-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .section-count {
+      color: var(--text-blue);
+      margin-left: 4px;
+    }
+    .section-total {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+    }
+    .account-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-top: 1px solid #f8f9fa;
+      cursor: pointer;
+    }
+    .account-row:first-of-type {
+      border-top: none;
+    }
+    .account-left {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .acc-text-info .name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .acc-text-info .number {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+    .acc-badge-blue {
+      background: #eef3ff;
+      color: #0854c4;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .account-right {
+      text-align: right;
+    }
+    .account-right .balance {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .btn-action-small {
+      margin-top: 4px;
+      background: #eef3ff;
+      color: var(--primary);
+      border: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* 계좌 거래내역 상세 */
+    .detail-card {
+      background: #ffffff;
+      padding: 22px 20px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .detail-card .badge {
+      display: inline-block;
+      background: #eef3ff;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .detail-card .name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .detail-card .number {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 16px;
+    }
+    .detail-card .balance-box {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .detail-card .balance-box .label {
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+    .detail-card .balance-box .val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .youth-progress-box {
+      margin-top: 14px;
+      padding: 14px;
+      background: #f0f7ff;
+      border-radius: 12px;
+      border: 1px solid #d3e5ff;
+    }
+    .youth-progress-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+    }
+    .bar-bg {
+      height: 8px;
+      background: #d8e5f7;
+      border-radius: 4px;
+      margin: 8px 0;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 23.3%;
+      border-radius: 4px;
+    }
+    .youth-progress-sub {
+      font-size: 12px;
+      color: #4e5968;
+      display: flex;
+      justify-content: space-between;
+    }
+    .history-list {
+      background: #ffffff;
+      padding: 10px 20px;
+    }
+    .history-date {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      padding: 12px 0 6px;
+    }
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f3f5;
+    }
+    .history-item:last-child {
+      border-bottom: none;
+    }
+    .history-desc {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .history-time {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+    .history-val {
+      text-align: right;
+    }
+    .history-val .amount {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .history-val .amount.plus {
+      color: var(--primary);
+    }
+    .history-val .after-bal {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+
+    /* =========================================
+       6. 전체 메뉴 화면
+       ========================================= */
+    .menu-group {
+      background: #ffffff;
+      margin-top: 10px;
+      padding: 18px 20px;
+    }
+    .menu-group-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .menu-badge {
+      font-size: 11px;
+      color: #0854c4;
+      background: #eef3ff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+    }
+
+    /* 하단 탭바 (5개: 홈, 금융, 상품, 혜택, 전체) */
+    .bottom-tab-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
+      height: 68px;
+      background: #ffffff;
+      border-top: 1px solid #eaecef;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+      padding-bottom: 10px;
+    }
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #8b95a1;
+      cursor: pointer;
+    }
+    .tab-item.active {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .tab-item svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+    .tab-won-badge {
+      width: 20px;
+      height: 20px;
+      border: 1.8px solid currentColor;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* 통신 지연 로딩 오버레이 */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .loading-overlay.active {
+      display: flex;
+    }
+    .spinner {
+      width: 38px;
+      height: 38px;
+      border: 3.5px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .loading-text {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-viewport">
+    
+    <!-- =========================================
+         [탭 1] 홈 화면
+         ========================================= -->
+    <div id="screen-home" class="screen active">
+      <div class="home-header">
+        <div class="user-profile">
+          <div class="user-badge">M</div>
+          <span>내 자산</span>
+        </div>
+        <div class="header-icons">
+          <button class="icon-btn" onclick="triggerNetworkDelay()">🔍</button>
+          <button class="icon-btn" onclick="triggerNetworkDelay()">🔔</button>
+          <button class="icon-btn" onclick="navigateTo('screen-menu')">☰</button>
+        </div>
+      </div>
+
+      <div class="home-banner" onclick="triggerNetworkDelay()">
+        <div>
+          <div class="banner-title">안전한 금융거래를 위해<br>지금 바로 확인해주세요.</div>
+          <span class="banner-link">추가 인증하기 &gt;</span>
+        </div>
+        <div style="font-size: 30px;">🪪</div>
+      </div>
+
+      <div class="finance-card">
+        <div class="finance-card-header">
+          <span class="finance-card-title">계좌</span>
+          <span class="link-all-acc" onclick="navigateTo('screen-list')">
+            전체계좌 &gt;
+          </span>
+        </div>
+
+        <div onclick="openDetail('checking')" style="cursor: pointer;">
+          <div class="acc-item-title-row">
+            <div class="shinhan-badge-icon">S</div>
+            <span class="acc-type-tag">입출금</span>
+            <span class="acc-fullname">[금융거래한도계좌1]U드림 저축...</span>
+            <span style="margin-left: auto; color: #8b95a1; font-size: 16px;">⚙️</span>
+          </div>
+          <div class="acc-num-copy">신한 110-363-575313 ❐</div>
+          <div class="acc-big-balance" id="home-acc-bal">3원</div>
+        </div>
+
+        <button class="btn-finance-transfer" onclick="triggerNetworkDelay()">이체</button>
+      </div>
+
+      <div class="quick-service-grid">
+        <div class="quick-btn" onclick="navigateTo('screen-list')">
+          <div class="icon">🏦</div>
+          <div class="txt">예적금</div>
+        </div>
+        <div class="quick-btn" onclick="navigateTo('screen-menu')">
+          <div class="icon">💰</div>
+          <div class="txt">신용대출</div>
+        </div>
+        <div class="quick-btn" onclick="triggerNetworkDelay()">
+          <div class="icon">🌐</div>
+          <div class="txt">환전/외환</div>
+        </div>
+        <div class="quick-btn" onclick="triggerNetworkDelay()">
+          <div class="icon">➕</div>
+          <div class="txt">계좌추가</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         [탭 2] 금융 화면 (스크린샷 1 반영)
+         ========================================= -->
+    <div id="screen-finance" class="screen">
+      <!-- 헤더 -->
+      <div class="nav-header">
+        <span style="font-size: 20px; font-weight: 800; color: #191f28;">금융</span>
+        <div class="header-icons">
+          <button class="icon-btn" onclick="triggerNetworkDelay()">✦</button>
+          <button class="icon-btn" onclick="triggerNetworkDelay()">☰</button>
+        </div>
+      </div>
+
+      <!-- 서브 탭: 은행 | 카드 | 증권 | 보험 -->
+      <div class="sub-nav-tabs">
+        <div class="sub-tab-item active">은행</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">카드</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">증권</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">보험</div>
+      </div>
+
+      <!-- 금액 토글 & 편집 바 -->
+      <div class="finance-sub-bar">
+        <div class="amount-toggle-pill">
+          <span>금액</span>
+          <div class="toggle-w-btn" onclick="toggleBalanceMask()">
+            <div class="toggle-w-circle">₩</div>
+          </div>
+        </div>
+        <span style="font-size: 13px; color: #6b7684; cursor: pointer;" onclick="triggerNetworkDelay()">편집 &gt;</span>
+      </div>
+
+      <!-- 메인 계좌 카드 -->
+      <div class="finance-card">
+        <div class="finance-card-header">
+          <span class="finance-card-title">계좌</span>
+          <span class="link-all-acc" onclick="navigateTo('screen-list')">
+            전체계좌 &gt;
+          </span>
+        </div>
+
+        <div onclick="openDetail('checking')" style="cursor: pointer;">
+          <div class="acc-item-title-row">
+            <div class="shinhan-badge-icon">S</div>
+            <span class="acc-type-tag">입출금</span>
+            <span class="acc-fullname">[금융거래한도계좌1]U드림 저축...</span>
+            <span style="margin-left: auto; color: #8b95a1; font-size: 16px;">⚙️</span>
+          </div>
+          <div class="acc-num-copy">신한 110-363-575313 ❐</div>
+          <div class="acc-big-balance" id="fin-acc-bal">3원</div>
+        </div>
+
+        <button class="btn-finance-transfer" onclick="triggerNetworkDelay()">이체</button>
+
+        <!-- 최근 송금 캐러셀 -->
+        <div class="recent-transfer-carousel">
+          <div class="recent-user-chip" onclick="triggerNetworkDelay()">
+            <div class="bank-mini-logo" style="background: #004098;">NH</div>
+            <div class="recent-chip-info">
+              <div class="r-name">한용민</div>
+              <div class="r-amt">22,079</div>
+            </div>
+          </div>
+          <div class="recent-user-chip" onclick="triggerNetworkDelay()">
+            <div class="bank-mini-logo" style="background: #005596;">IBK</div>
+            <div class="recent-chip-info">
+              <div class="r-name">바로한용민</div>
+              <div class="r-amt">52,602</div>
+            </div>
+          </div>
+          <div class="recent-user-chip" onclick="triggerNetworkDelay()">
+            <div class="bank-mini-logo" style="background: #1c2559;">Kbank</div>
+            <div class="recent-chip-info">
+              <div class="r-name">한용민</div>
+              <div class="r-amt">40,000</div>
+            </div>
+          </div>
+          <div class="recent-user-chip" onclick="triggerNetworkDelay()">
+            <div class="bank-mini-logo" style="background: #5d5349;">KB</div>
+            <div class="recent-chip-info">
+              <div class="r-name">한용민</div>
+              <div class="r-amt">10,000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 나의 퇴직연금 현황 확인하기 배너 -->
+      <div class="retire-banner-box" onclick="triggerNetworkDelay()">
+        <div>
+          <div class="retire-title">나의 퇴직연금 현황 확인하기</div>
+          <span class="retire-link">나의 퇴직연금 &gt;</span>
+        </div>
+        <div style="font-size: 32px;">🏦</div>
+      </div>
+
+      <!-- 자산관리 섹션 -->
+      <div class="finance-card" style="margin-top: 4px;">
+        <div class="finance-card-title" style="margin-bottom: 6px;">자산관리</div>
+        <div style="font-size: 13px; color: #8b95a1;">내 모든 자산 종합 진단</div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         [탭 3] 상품 화면 (스크린샷 2 반영)
+         ========================================= -->
+    <div id="screen-product" class="screen">
+      <div class="nav-header">
+        <div style="display: flex; align-items: center; gap: 4px; font-size: 19px; font-weight: 800;">
+          <span>모든상품</span>
+          <span style="font-size: 14px;">∨</span>
+        </div>
+        <div class="header-icons">
+          <button class="icon-btn" onclick="triggerNetworkDelay()">🛒</button>
+          <button class="icon-btn" onclick="triggerNetworkDelay()">✦</button>
+          <button class="icon-btn" onclick="navigateTo('screen-menu')">☰</button>
+        </div>
+      </div>
+
+      <!-- 발견 | 입출금 | 저축 | 카드 | 대출 | 외환 | 투자 | 퇴직 -->
+      <div class="sub-nav-tabs">
+        <div class="sub-tab-item active">발견</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">입출금</div>
+        <div class="sub-tab-item" onclick="navigateTo('screen-list')">저축</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">카드</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">대출</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">외환</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">투자</div>
+      </div>
+
+      <!-- 어떤 상품을 찾으세요? 검색창 -->
+      <div style="padding: 16px 20px 4px; font-size: 15px; font-weight: 700; color: #0854c4; display: flex; align-items: center; gap: 4px;">
+        <span>✦</span> 어떤 상품을 찾으세요?
+      </div>
+      <div class="product-search-box" onclick="triggerNetworkDelay()">
+        <span class="product-search-placeholder">내게 맞는 카드 추천해줘</span>
+        <span style="color: #6b7684; font-size: 16px;">🔍</span>
+      </div>
+
+      <!-- 특화 ZONE 카드 리스트 -->
+      <div class="product-section-card">
+        <div class="title">특화 ZONE</div>
+        
+        <div class="product-list-item" onclick="triggerNetworkDelay()">
+          <div class="prod-icon-sq" style="color: #6b7684;">🔗</div>
+          <div class="prod-content">
+            <div class="prod-title">신한 SOL LINK</div>
+            <div class="prod-desc">증권 거래 수수료가 낮은 은행·증권 통합계좌</div>
+          </div>
+          <span style="color: #8b95a1;">&gt;</span>
+        </div>
+
+        <div class="product-list-item" onclick="triggerNetworkDelay()">
+          <div class="prod-icon-sq" style="color: #7cb342;">🫒</div>
+          <div class="prod-content">
+            <div class="prod-title">올리브영 SOL통장</div>
+            <div class="prod-desc">올리브영 리워드 최대 11만원 혜택</div>
+          </div>
+          <span style="color: #8b95a1;">&gt;</span>
+        </div>
+
+        <div class="product-list-item" onclick="triggerNetworkDelay()">
+          <div class="prod-icon-sq" style="color: #0854c4;">📘</div>
+          <div class="prod-content">
+            <div class="prod-title">쏠편한 정기예금</div>
+            <div class="prod-desc">금액 제한없이, 기간도 유연하게</div>
+          </div>
+          <span style="color: #8b95a1;">&gt;</span>
+        </div>
+
+        <div class="product-list-item" onclick="triggerNetworkDelay()">
+          <div class="prod-icon-sq" style="color: #1e88e5;">👟</div>
+          <div class="prod-content">
+            <div class="prod-title">신한 운동화 적금</div>
+            <div class="prod-desc">'20+뛰어요' 또는 '50+ 걸어요' 가입하면 우대금리</div>
+          </div>
+          <span style="color: #8b95a1;">&gt;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         [탭 4] 혜택 화면 (스크린샷 3 반영)
+         ========================================= -->
+    <div id="screen-benefit" class="screen">
+      <div class="nav-header">
+        <span style="font-size: 20px; font-weight: 800; color: #191f28;">혜택</span>
+        <div class="header-icons">
+          <button class="icon-btn" onclick="triggerNetworkDelay()">✦</button>
+          <button class="icon-btn" onclick="navigateTo('screen-menu')">☰</button>
+        </div>
+      </div>
+
+      <div class="sub-nav-tabs">
+        <div class="sub-tab-item active">혜택/이벤트</div>
+        <div class="sub-tab-item" onclick="triggerNetworkDelay()">생활편의</div>
+      </div>
+
+      <!-- 상단 만보걷기 배너 -->
+      <div style="padding: 14px 20px 4px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: #0854c4;">만보걷기</div>
+          <div style="font-size: 16px; font-weight: 700; color: #191f28; margin-top: 2px;">만보걷기에 참여해 보세요!</div>
+        </div>
+        <div style="font-size: 28px;">👟</div>
+      </div>
+
+      <!-- 마이신한포인트 블루 히어로 카드 -->
+      <div class="point-card-hero">
+        <div class="bear-illust">🐻</div>
+        <div class="point-badge-txt">마이신한포인트 ⓘ</div>
+        <div class="point-big-val" onclick="triggerNetworkDelay()">0P &gt;</div>
+
+        <div class="point-inner-white-box">
+          <div class="point-sub-row" onclick="triggerNetworkDelay()">
+            <span class="point-row-label">내 멤버십</span>
+            <span class="point-row-val">
+              <span class="gold-m-badge">M</span> 일반 &gt;
+            </span>
+          </div>
+          <div class="point-sub-row" onclick="triggerNetworkDelay()">
+            <span class="point-row-label">내 쿠폰</span>
+            <span class="point-row-val">더보기 &gt;</span>
+          </div>
+          <div class="point-sub-row" onclick="triggerNetworkDelay()">
+            <span class="point-row-label">포인트 자동투자</span>
+            <span class="point-row-val">&gt;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하루도 빠짐없이 받아요 -->
+      <div class="benefit-check-list">
+        <div class="benefit-check-title">하루도 빠짐없이 받아요</div>
+
+        <div class="benefit-action-row">
+          <div class="benefit-item-left">
+            <div style="font-size: 24px;">🏆</div>
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #191f28;">삼삼오락실</div>
+              <div style="font-size: 12px; color: #8b95a1;">잠든 두뇌 깨우기</div>
+            </div>
+          </div>
+          <button class="btn-participate" onclick="triggerNetworkDelay()">참여하기</button>
+        </div>
+
+        <div class="benefit-action-row">
+          <div class="benefit-item-left">
+            <div style="font-size: 24px;">📅</div>
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #191f28;">출석퀴즈</div>
+              <div style="font-size: 12px; color: #8b95a1;">매일 포인트 100% 당첨</div>
+            </div>
+          </div>
+          <button class="btn-participate" onclick="triggerNetworkDelay()">참여하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         [전체 계좌 목록 화면] (전체계좌 > 클릭 시 진입)
+         ========================================= -->
+    <div id="screen-list" class="screen">
+      <div class="nav-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="icon-btn" onclick="navigateTo('screen-finance')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <span style="font-size: 17px; font-weight: 700;">전체 계좌</span>
+        </div>
+        <div class="header-icons">
+          <button class="icon-btn" onclick="triggerNetworkDelay()">⚙️</button>
+        </div>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterList('all', this)">전체</button>
+        <button class="filter-tab" onclick="filterList('checking', this)">입출금</button>
+        <button class="filter-tab" onclick="filterList('savings', this)">적금/청약</button>
+      </div>
+
+      <div class="account-section" id="section-checking">
+        <div class="section-title-wrap">
+          <div class="section-title">입출금 <span class="section-count">1</span></div>
+          <button class="icon-btn" onclick="triggerNetworkDelay()" style="font-size: 14px; color: #8b95a1;">⚙️</button>
+        </div>
+        <div class="section-total">총 잔액 3원</div>
+
+        <div class="account-row" onclick="openDetail('checking')">
+          <div class="account-left">
+            <div class="shinhan-badge-icon">S</div>
+            <div class="acc-text-info">
+              <div class="name">[한도계좌1] U드림 저축예금</div>
+              <div class="number">신한 110-363-575313</div>
+            </div>
+          </div>
+          <div class="account-right">
+            <div class="balance">3원</div>
+            <button class="btn-action-small" onclick="event.stopPropagation(); triggerNetworkDelay();">이체</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="account-section" id="section-savings">
+        <div class="section-title-wrap">
+          <div class="section-title">적금 · 청약 <span class="section-count">1</span></div>
+          <button class="icon-btn" onclick="triggerNetworkDelay()" style="font-size: 14px; color: #8b95a1;">⚙️</button>
+        </div>
+        <div class="section-total">총 납입잔액 9,800,000원</div>
+
+        <div class="account-row" onclick="openDetail('youth')">
+          <div class="account-left">
+            <div class="shinhan-badge-icon" style="background: #0070f3;">S</div>
+            <div class="acc-text-info">
+              <div class="name">
+                신한 청년도약계좌
+                <span class="acc-badge-blue">자유적립식</span>
+              </div>
+              <div class="number">신한 220-810-948211 · 매월 25일 자동이체</div>
+            </div>
+          </div>
+          <div class="account-right">
+            <div class="balance">9,800,000원</div>
+            <button class="btn-action-small" onclick="event.stopPropagation(); triggerNetworkDelay();">입금</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         [계좌 상세 및 거래내역 화면]
+         ========================================= -->
+    <div id="screen-detail" class="screen">
+      <div class="nav-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="icon-btn" onclick="navigateTo('screen-list')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <span style="font-size: 17px; font-weight: 700;" id="detail-nav-title">계좌 상세</span>
+        </div>
+        <div class="header-icons">
+          <button class="icon-btn" onclick="triggerNetworkDelay()">⚙️</button>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <span class="badge" id="detail-badge">입출금자유</span>
+        <div class="name" id="detail-name">계좌명</div>
+        <div class="number" id="detail-number">신한 000-000-000000</div>
+        
+        <div class="balance-box">
+          <span class="label">현재 잔액</span>
+          <span class="val" id="detail-balance">0원</span>
+        </div>
+
+        <div class="youth-progress-box" id="youth-box" style="display: none;">
+          <div class="youth-progress-title">
+            <span>납입 회차 관리</span>
+            <span>14회 / 60회 (23%)</span>
+          </div>
+          <div class="bar-bg">
+            <div class="bar-fill"></div>
+          </div>
+          <div class="youth-progress-sub">
+            <span>자동이체일: 매월 25일</span>
+            <span>적용금리: 연 6.00% (비과세)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="history-list" id="history-container"></div>
+    </div>
+
+    <!-- =========================================
+         [탭 5] 전체 메뉴 화면
+         ========================================= -->
+    <div id="screen-menu" class="screen">
+      <div class="nav-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="icon-btn" onclick="navigateTo('screen-home')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <span style="font-size: 17px; font-weight: 700;">전체 메뉴</span>
+        </div>
+        <div class="header-icons">
+          <button class="icon-btn" onclick="triggerNetworkDelay()">⚙️</button>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <div class="menu-group-title">조회 · 이체</div>
+        <div class="menu-list">
+          <div class="menu-item" onclick="navigateTo('screen-list')">
+            <span>전체 계좌 조회</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>즉시이체 / 자동이체 관리</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>오픈뱅킹 다른 금융기관 관리</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <div class="menu-group-title">예적금 · 청약</div>
+        <div class="menu-list">
+          <div class="menu-item" onclick="openDetail('youth')">
+            <span>신한 청년도약계좌 관리 <span class="menu-badge">가입중</span></span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>정기예금 / 회전식 예금</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>주택청약종합저축</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <div class="menu-group-title">대출</div>
+        <div class="menu-list">
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>직장인 신용대출 (한도조회)</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>쏠편한 비상금/마이너스 통장</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>주택담보 / 전월세보증금 대출</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+          <div class="menu-item" onclick="triggerNetworkDelay()">
+            <span>원리금 상환 계산기</span>
+            <span style="color: #8b95a1;">&gt;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         하단 내비게이션 바 (홈, 금융, 상품, 혜택, 전체)
+         ========================================= -->
+    <div class="bottom-tab-bar">
+      <!-- 홈 -->
+      <div class="tab-item active" id="tab-nav-home" onclick="handleBottomTab('screen-home', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>홈</span>
+      </div>
+      <!-- 금융 -->
+      <div class="tab-item" id="tab-nav-finance" onclick="handleBottomTab('screen-finance', this)">
+        <div class="tab-won-badge">₩</div>
+        <span>금융</span>
+      </div>
+      <!-- 상품 -->
+      <div class="tab-item" id="tab-nav-product" onclick="handleBottomTab('screen-product', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span>상품</span>
+      </div>
+      <!-- 혜택 -->
+      <div class="tab-item" id="tab-nav-benefit" onclick="handleBottomTab('screen-benefit', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+        <span>혜택</span>
+      </div>
+      <!-- 전체 -->
+      <div class="tab-item" id="tab-nav-menu" onclick="handleBottomTab('screen-menu', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <span>전체</span>
+      </div>
+    </div>
+
+    <!-- 통신 지연 오버레이 -->
+    <div class="loading-overlay" id="loading-overlay" onclick="closeSpinner()">
+      <div class="spinner"></div>
+      <div class="loading-text">데이터를 불러오는 중입니다...</div>
+    </div>
+
+  </div>
+
+  <script>
+    // 청년도약계좌 (2025.08 ~ 2026.10, 1회 미납 반영 14회차 9,800,000원)
+    const accountData = {
+      checking: {
+        badge: "입출금자유",
+        name: "[금융거래한도계좌1] U드림 저축예금",
+        number: "신한 110-363-575313",
+        balance: "3원",
+        isYouth: false,
+        history: [
+          { date: "2026.11.02", desc: "체크카드 결제 (편의점)", time: "19:42", amount: "-4,500원", after: "3원", isPlus: false },
+          { date: "2026.11.02", desc: "신한 타행입금", time: "18:10", amount: "+4,500원", after: "4,503원", isPlus: true },
+          { date: "2026.10.28", desc: "이자지급 (결산이자)", time: "02:15", amount: "+1원", after: "3원", isPlus: true }
+        ]
+      },
+      youth: {
+        badge: "정기적금",
+        name: "신한 청년도약계좌 (자유적립식)",
+        number: "신한 220-810-948211",
+        balance: "9,800,000원",
+        isYouth: true,
+        history: [
+          { date: "2026.10.25", desc: "14회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "9,800,000원", isPlus: true },
+          { date: "2026.09.25", desc: "13회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "9,100,000원", isPlus: true },
+          { date: "2026.08.25", desc: "12회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "8,400,000원", isPlus: true },
+          { date: "2026.07.25", desc: "11회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "7,700,000원", isPlus: true },
+          { date: "2026.06.25", desc: "10회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "7,000,000원", isPlus: true },
+          { date: "2026.05.25", desc: "9회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "6,300,000원", isPlus: true },
+          { date: "2026.04.25", desc: "8회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "5,600,000원", isPlus: true },
+          { date: "2026.03.25", desc: "7회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "4,900,000원", isPlus: true },
+          { date: "2026.01.25", desc: "6회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "4,200,000원", isPlus: true },
+          { date: "2025.12.25", desc: "5회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "3,500,000원", isPlus: true },
+          { date: "2025.11.25", desc: "4회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "2,800,000원", isPlus: true },
+          { date: "2025.10.25", desc: "3회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "2,100,000원", isPlus: true },
+          { date: "2025.09.25", desc: "2회차 자동이체 납입", time: "09:30", amount: "+700,000원", after: "1,400,000원", isPlus: true },
+          { date: "2025.08.25", desc: "1회차 신규가입 납입", time: "09:30", amount: "+700,000원", after: "700,000원", isPlus: true }
+        ]
+      }
+    };
+
+    let isMasked = false;
+    function toggleBalanceMask() {
+      isMasked = !isMasked;
+      const displayVal = isMasked ? "잔액 숨김" : "3원";
+      document.getElementById('home-acc-bal').innerText = displayVal;
+      document.getElementById('fin-acc-bal').innerText = displayVal;
+    }
+
+    function navigateTo(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo(0, 0);
+      }
+
+      document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+      if (screenId === 'screen-home') {
+        document.getElementById('tab-nav-home').classList.add('active');
+      } else if (screenId === 'screen-finance') {
+        document.getElementById('tab-nav-finance').classList.add('active');
+      } else if (screenId === 'screen-product') {
+        document.getElementById('tab-nav-product').classList.add('active');
+      } else if (screenId === 'screen-benefit') {
+        document.getElementById('tab-nav-benefit').classList.add('active');
+      } else if (screenId === 'screen-menu') {
+        document.getElementById('tab-nav-menu').classList.add('active');
+      }
+    }
+
+    function handleBottomTab(screenId, el) {
+      document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      navigateTo(screenId);
+    }
+
+    function triggerNetworkDelay() {
+      const overlay = document.getElementById('loading-overlay');
+      overlay.classList.add('active');
+    }
+
+    function closeSpinner() {
+      document.getElementById('loading-overlay').classList.remove('active');
+    }
+
+    function filterList(type, btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      const secChecking = document.getElementById('section-checking');
+      const secSavings = document.getElementById('section-savings');
+
+      if (type === 'all') {
+        secChecking.style.display = 'block';
+        secSavings.style.display = 'block';
+      } else if (type === 'checking') {
+        secChecking.style.display = 'block';
+        secSavings.style.display = 'none';
+      } else if (type === 'savings') {
+        secChecking.style.display = 'none';
+        secSavings.style.display = 'block';
+      }
+    }
+
+    function openDetail(key) {
+      const data = accountData[key];
+      if (!data) return;
+
+      document.getElementById('detail-badge').innerText = data.badge;
+      document.getElementById('detail-name').innerText = data.name;
+      document.getElementById('detail-number').innerText = data.number;
+      document.getElementById('detail-balance').innerText = data.balance;
+      document.getElementById('detail-nav-title').innerText = data.isYouth ? "적금 거래내역" : "계좌 거래내역";
+
+      const youthBox = document.getElementById('youth-box');
+      youthBox.style.display = data.isYouth ? 'block' : 'none';
+
+      const container = document.getElementById('history-container');
+      container.innerHTML = "";
+
+      let lastDate = "";
+      data.history.forEach(item => {
+        if (item.date !== lastDate) {
+          const dateDiv = document.createElement('div');
+          dateDiv.className = 'history-date';
+          dateDiv.innerText = item.date;
+          container.appendChild(dateDiv);
+          lastDate = item.date;
+        }
+
+        const row = document.createElement('div');
+        row.className = 'history-item';
+        row.innerHTML = `
+          <div>
+            <div class="history-desc">${item.desc}</div>
+            <div class="history-time">${item.time}</div>
+          </div>
+          <div class="history-val">
+            <div class="amount ${item.isPlus ? 'plus' : ''}">${item.amount}</div>
+            <div class="after-bal">${item.after}</div>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      navigateTo('screen-detail');
+    }
+
+    // 초기 홈 탭 활성화
+    document.getElementById('tab-nav-home').classList.add('active');
+  </script>
+</body>
+</html>
