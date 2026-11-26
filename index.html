@@ -1,21 +1,85 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>신한 SOL뱅크</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="신한 SOL"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><style>:root{--primary:#0854c4;--primary-light:#eef4fe;--bg:#f4f6fb;--surface:#ffffff;--text-main:#191f28;--text-sub:#8b95a1;--line:#edf0f5;--error:#f04452}*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;user-select:none;-webkit-user-select:none}body{background:#000;display:flex;justify-content:center;min-height:100vh}.app-viewport{width:100%;max-width:430px;min-height:100vh;background:var(--bg);position:relative;display:flex;flex-direction:column;overflow-x:hidden;padding-top:env(safe-area-inset-top);box-shadow:0 0 25px rgba(0,0,0,.5)}.screen{display:none;flex-direction:column;flex:1;padding-bottom:calc(75px + env(safe-area-inset-bottom))}.screen.active{display:flex;animation:fadeIn .2s ease-in-out}@keyframes fadeIn{from{opacity:.85;transform:scale(.995)}to{opacity:1;transform:scale(1)}}.lock-screen{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:100vh;background:#fff;z-index:99999;display:flex;flex-direction:column;justify-content:space-between;padding:calc(40px + env(safe-area-inset-top)) 24px calc(24px + env(safe-area-inset-bottom));box-sizing:border-box}.lock-screen.hidden{display:none}.lock-header{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:20px}.lock-title{font-size:20px;font-weight:800;color:var(--text-main);margin-top:14px;letter-spacing:-.3px}.lock-sub{font-size:13px;color:var(--text-sub);margin-top:6px;min-height:18px}.lock-sub.error{color:var(--error);font-weight:700}.pin-dots{display:flex;gap:14px;margin-top:32px;justify-content:center}.pin-dot{width:14px;height:14px;border-radius:50%;background:#e5e8eb;transition:background-color .15s,transform .15s}.pin-dot.filled{background:var(--primary);transform:scale(1.15)}.pin-dots.shake{animation:shakeAnim .4s ease-in-out}@keyframes shakeAnim{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}.keypad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 10px;margin-bottom:10px}.key-btn{height:60px;border-radius:14px;border:none;background:transparent;font-size:24px;font-weight:700;color:#191f28;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .1s}.key-btn:active{background:#f2f4f6}.key-btn.fn{font-size:15px;color:#4e5968;font-weight:600}.nav-header{padding:12px 20px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--surface);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(0,0,0,.02)}.nav-title{font-size:20px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px}.header-icons{display:flex;gap:16px;align-items:center}.icon-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333d4b;padding:2px}.icon-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}.sub-nav-tabs{display:flex;gap:22px;padding:10px 20px 0;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}.sub-nav-tabs::-webkit-scrollbar{display:none}.sub-tab-item{font-size:15px;font-weight:600;color:#8b95a1;padding-bottom:10px;position:relative;cursor:pointer}.sub-tab-item.active{color:#191f28;font-weight:800}.sub-tab-item.active::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2.5px;background:#191f28;border-radius:2px}.app-card{background:#fff;margin:0 16px 12px;border-radius:20px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.card-head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.card-head-title{font-size:17px;font-weight:700;color:var(--text-main)}.card-head-link{font-size:13px;color:var(--text-sub);display:flex;align-items:center;gap:2px;cursor:pointer}.shinhan-logo-badge{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0a5cdb 0%,#003e99 100%);color:#fff;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(8,84,196,.25)}.home-top-bar{padding:16px 20px 14px;background:linear-gradient(180deg,#eaf1fd 0%,#f4f6fb 100%);display:flex;justify-content:space-between;align-items:center}.user-greeting{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:var(--text-main)}.user-grade-tag{background:#f8cf40;color:#634a00;font-size:10.5px;font-weight:800;padding:2px 6px;border-radius:6px}.main-acc-box{margin:10px 16px 12px;background:#fff;border-radius:24px;padding:22px 20px 18px;box-shadow:0 4px 18px rgba(0,0,0,.03)}.main-acc-info{display:flex;align-items:flex-start;gap:12px;cursor:pointer}.main-acc-title-wrap{flex:1}.main-acc-kind{font-size:13px;color:#4e5968;font-weight:600;display:flex;align-items:center;gap:6px}.main-acc-num{font-size:12px;color:#8b95a1;margin-top:2px}.main-acc-bal{font-size:26px;font-weight:800;color:#191f28;margin:12px 0 16px;letter-spacing:-.3px}.main-acc-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn-acc-action{background:var(--primary-light);color:var(--primary);border:none;padding:11px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;text-align:center}.btn-acc-action.secondary{background:#f2f4f6;color:#4e5968}.quick-send-strip{display:flex;gap:10px;overflow-x:auto;margin-top:16px;padding-top:14px;border-top:1px solid #f2f4f7}.quick-send-strip::-webkit-scrollbar{display:none}.quick-send-item{display:flex;align-items:center;gap:8px;background:#f7f9fa;padding:8px 12px 8px 8px;border-radius:18px;flex-shrink:0;cursor:pointer}.bank-dot{width:24px;height:24px;border-radius:50%;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center}.quick-send-text .name{font-size:12px;font-weight:700;color:#333d4b}.quick-send-text .bank{font-size:11px;color:#8b95a1}.home-grid-nav{margin:0 16px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.home-grid-btn{background:#fff;border-radius:18px;padding:14px 6px 12px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.02)}.home-grid-btn svg{width:24px;height:24px;stroke:var(--primary);stroke-width:1.8;fill:none}.home-grid-btn span{font-size:12px;font-weight:700;color:#4e5968}.bottom-tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(64px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding-top:6px;z-index:100}.tab-item{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;color:#9aa2ac;cursor:pointer}.tab-item.active{color:var(--primary);font-weight:800}.tab-item svg{width:24px;height:24px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}.network-spinner-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.12);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);z-index:999999;display:none;align-items:center;justify-content:center}.network-spinner-modal.active{display:flex}.ios-spinner{width:32px;height:32px;border:3.5px solid rgba(8,84,196,.2);border-top-color:var(--primary);border-radius:50%;animation:spin .6s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}</style></head><body><div class="app-viewport">
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>신한 SOL뱅크</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="신한 SOL"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><style>:root{--primary:#0854c4;--primary-light:#eef4fe;--bg:#f4f6fb;--surface:#ffffff;--text-main:#191f28;--text-sub:#8b95a1;--line:#edf0f5;--error:#f04452}*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;user-select:none;-webkit-user-select:none}body{background:#000;display:flex;justify-content:center;min-height:100vh}.app-viewport{width:100%;max-width:430px;min-height:100vh;background:var(--bg);position:relative;display:flex;flex-direction:column;overflow-x:hidden;padding-top:env(safe-area-inset-top);box-shadow:0 0 25px rgba(0,0,0,.5)}.screen{display:none;flex-direction:column;flex:1;padding-bottom:calc(75px + env(safe-area-inset-bottom))}.screen.active{display:flex;animation:fadeIn .2s ease-in-out}@keyframes fadeIn{from{opacity:.85;transform:scale(.995)}to{opacity:1;transform:scale(1)}}
 
+/* 신한 Super SOL 심플 블루 스플래시 */
+.splash-screen{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:100vh;background:linear-gradient(160deg,#0b5ed7 0%,#053d99 100%);z-index:100000;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:calc(60px + env(safe-area-inset-top)) 24px calc(48px + env(safe-area-inset-bottom));transition:opacity .45s ease-out,visibility .45s ease-out}
+.splash-screen.fade-out{opacity:0;visibility:hidden}
+.splash-center{display:flex;flex-direction:column;align-items:center;margin-top:32vh;animation:splashPop .55s cubic-bezier(.16,1,.3,1)}
+@keyframes splashPop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.super-sol-wordmark{font-size:34px;font-weight:900;color:#ffffff;letter-spacing:-.8px;display:flex;align-items:center;gap:6px}
+.super-sol-sub{font-size:15px;font-weight:700;color:rgba(255,255,255,.85);margin-top:8px;letter-spacing:-.2px}
+.splash-footer{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.9);font-weight:800;font-size:15px;letter-spacing:-.3px}
+
+/* 고도화된 신한 SOL 로그인 화면 */
+.lock-screen{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:100vh;background:#f4f6fb;z-index:99999;display:flex;flex-direction:column;justify-content:space-between;padding:calc(28px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));box-sizing:border-box}.lock-screen.hidden{display:none}
+.lock-top-bar{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 12px}
+.sol-ace-pill{display:inline-flex;align-items:center;gap:4px;background:#eef4fe;border:1px solid #c7dcfc;color:#0854c4;font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:20px}
+.lock-card{background:#ffffff;border-radius:24px;padding:28px 20px 26px;box-shadow:0 4px 20px rgba(8,84,196,.05);display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:6px}
+.lock-greet{font-size:14px;color:#4e5968;font-weight:600}
+.lock-title{font-size:20px;font-weight:800;color:var(--text-main);margin-top:6px;letter-spacing:-.4px}
+.lock-sub{font-size:13px;color:var(--text-sub);margin-top:8px;min-height:18px}
+.lock-sub.error{color:var(--error);font-weight:700}
+.pin-dots{display:flex;gap:14px;margin-top:26px;justify-content:center}
+.pin-dot{width:14px;height:14px;border-radius:50%;background:#e5e8eb;transition:background-color .15s,transform .15s}
+.pin-dot.filled{background:var(--primary);transform:scale(1.18);box-shadow:0 2px 6px rgba(8,84,196,.35)}
+.pin-dots.shake{animation:shakeAnim .4s ease-in-out}@keyframes shakeAnim{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.auth-alt-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:22px;font-size:12.5px;color:#6b7684;font-weight:600}
+.auth-alt-btn{background:none;border:none;color:#333d4b;font-size:12.5px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+.keypad-wrap{background:#ffffff;border-radius:24px;padding:14px 10px;box-shadow:0 2px 12px rgba(0,0,0,.02)}
+.keypad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.key-btn{height:56px;border-radius:14px;border:none;background:transparent;font-size:23px;font-weight:700;color:#191f28;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .1s}
+.key-btn:active{background:#f2f4f6}.key-btn.fn{font-size:14.5px;color:#4e5968;font-weight:600}
+
+.nav-header{padding:12px 20px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--surface);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(0,0,0,.02)}.nav-title{font-size:20px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px}.header-icons{display:flex;gap:16px;align-items:center}.icon-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333d4b;padding:2px}.icon-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}.sub-nav-tabs{display:flex;gap:22px;padding:10px 20px 0;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}.sub-nav-tabs::-webkit-scrollbar{display:none}.sub-tab-item{font-size:15px;font-weight:600;color:#8b95a1;padding-bottom:10px;position:relative;cursor:pointer}.sub-tab-item.active{color:#191f28;font-weight:800}.sub-tab-item.active::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2.5px;background:#191f28;border-radius:2px}.app-card{background:#fff;margin:0 16px 12px;border-radius:20px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.card-head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.card-head-title{font-size:17px;font-weight:700;color:var(--text-main)}.card-head-link{font-size:13px;color:var(--text-sub);display:flex;align-items:center;gap:2px;cursor:pointer}.shinhan-logo-badge{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0a5cdb 0%,#003e99 100%);color:#fff;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(8,84,196,.25)}.home-top-bar{padding:16px 20px 14px;background:linear-gradient(180deg,#eaf1fd 0%,#f4f6fb 100%);display:flex;justify-content:space-between;align-items:center}.user-greeting{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:var(--text-main)}.user-grade-tag{background:#f8cf40;color:#634a00;font-size:10.5px;font-weight:800;padding:2px 6px;border-radius:6px}.main-acc-box{margin:10px 16px 12px;background:#fff;border-radius:24px;padding:22px 20px 18px;box-shadow:0 4px 18px rgba(0,0,0,.03)}.main-acc-info{display:flex;align-items:flex-start;gap:12px;cursor:pointer}.main-acc-title-wrap{flex:1}.main-acc-kind{font-size:13px;color:#4e5968;font-weight:600;display:flex;align-items:center;gap:6px}.main-acc-num{font-size:12px;color:#8b95a1;margin-top:2px}.main-acc-bal{font-size:26px;font-weight:800;color:#191f28;margin:12px 0 16px;letter-spacing:-.3px}.main-acc-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn-acc-action{background:var(--primary-light);color:var(--primary);border:none;padding:11px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;text-align:center}.btn-acc-action.secondary{background:#f2f4f6;color:#4e5968}.quick-send-strip{display:flex;gap:10px;overflow-x:auto;margin-top:16px;padding-top:14px;border-top:1px solid #f2f4f7}.quick-send-strip::-webkit-scrollbar{display:none}.quick-send-item{display:flex;align-items:center;gap:8px;background:#f7f9fa;padding:8px 12px 8px 8px;border-radius:18px;flex-shrink:0;cursor:pointer}.bank-dot{width:24px;height:24px;border-radius:50%;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center}.quick-send-text .name{font-size:12px;font-weight:700;color:#333d4b}.quick-send-text .bank{font-size:11px;color:#8b95a1}.home-grid-nav{margin:0 16px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.home-grid-btn{background:#fff;border-radius:18px;padding:14px 6px 12px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.02)}.home-grid-btn svg{width:24px;height:24px;stroke:var(--primary);stroke-width:1.8;fill:none}.home-grid-btn span{font-size:12px;font-weight:700;color:#4e5968}.bottom-tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(64px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding-top:6px;z-index:100}.tab-item{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;color:#9aa2ac;cursor:pointer}.tab-item.active{color:var(--primary);font-weight:800}.tab-item svg{width:24px;height:24px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}.network-spinner-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.12);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);z-index:999999;display:none;align-items:center;justify-content:center}.network-spinner-modal.active{display:flex}.ios-spinner{width:32px;height:32px;border:3.5px solid rgba(8,84,196,.2);border-top-color:var(--primary);border-radius:50%;animation:spin .6s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}</style></head><body><div class="app-viewport">
+
+<!-- [1] 파란 배경에 화이트 "Super SOL" 심플 스플래시 화면 -->
+<div id="splash-screen" class="splash-screen">
+  <div class="splash-center">
+    <div class="super-sol-wordmark">Super SOL</div>
+    <div class="super-sol-sub">신한 SOL뱅크</div>
+  </div>
+  <div class="splash-footer">
+    <span>신한은행</span>
+  </div>
+</div>
+
+<!-- [2] 고도화된 신한 SOL 로그인(간편비밀번호) 화면 -->
 <div id="lock-screen" class="lock-screen">
-  <div class="lock-header">
-    <div class="shinhan-logo-badge" style="width:48px;height:48px;font-size:20px;">S</div>
-    <div class="lock-title">간편비밀번호를 입력해주세요</div>
-    <div id="lock-msg" class="lock-sub">6자리 비밀번호를 눌러주세요</div>
-    <div id="pin-dots" class="pin-dots">
-      <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
-      <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+  <div>
+    <div class="lock-top-bar">
+      <div style="display:flex;align-items:center;gap:7px;">
+        <div class="shinhan-logo-badge" style="width:24px;height:24px;font-size:12px;">S</div>
+        <span style="font-size:15.5px;font-weight:800;color:#191f28;">신한 SOL뱅크</span>
+      </div>
+      <span class="sol-ace-pill">SOL ACE</span>
+    </div>
+
+    <div class="lock-card">
+      <div class="lock-greet">한용민 님, 환영합니다</div>
+      <div class="lock-title">간편비밀번호를 입력해주세요</div>
+      <div id="lock-msg" class="lock-sub">6자리 비밀번호 입력</div>
+      <div id="pin-dots" class="pin-dots">
+        <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+        <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+      </div>
+      <div class="auth-alt-row">
+        <button class="auth-alt-btn" onclick="triggerActionWithDelay()">
+          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path><circle cx="12" cy="11" r="2.5"></circle></svg>
+          Face ID 로그인
+        </button>
+        <span style="color:#dee2e6;">|</span>
+        <button class="auth-alt-btn" onclick="triggerActionWithDelay()">다른 로그인 수단 &gt;</button>
+      </div>
     </div>
   </div>
-  <div class="keypad-grid">
-    <button class="key-btn" onclick="pressPin('1')">1</button><button class="key-btn" onclick="pressPin('2')">2</button><button class="key-btn" onclick="pressPin('3')">3</button>
-    <button class="key-btn" onclick="pressPin('4')">4</button><button class="key-btn" onclick="pressPin('5')">5</button><button class="key-btn" onclick="pressPin('6')">6</button>
-    <button class="key-btn" onclick="pressPin('7')">7</button><button class="key-btn" onclick="pressPin('8')">8</button><button class="key-btn" onclick="pressPin('9')">9</button>
-    <button class="key-btn fn" onclick="clearPin()">재입력</button><button class="key-btn" onclick="pressPin('0')">0</button>
-    <button class="key-btn fn" onclick="backspacePin()"><svg style="width:24px;height:24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg></button>
+
+  <div class="keypad-wrap">
+    <div class="keypad-grid">
+      <button class="key-btn" onclick="pressPin('1')">1</button><button class="key-btn" onclick="pressPin('2')">2</button><button class="key-btn" onclick="pressPin('3')">3</button>
+      <button class="key-btn" onclick="pressPin('4')">4</button><button class="key-btn" onclick="pressPin('5')">5</button><button class="key-btn" onclick="pressPin('6')">6</button>
+      <button class="key-btn" onclick="pressPin('7')">7</button><button class="key-btn" onclick="pressPin('8')">8</button><button class="key-btn" onclick="pressPin('9')">9</button>
+      <button class="key-btn fn" onclick="clearPin()">전체삭제</button><button class="key-btn" onclick="pressPin('0')">0</button>
+      <button class="key-btn fn" onclick="backspacePin()"><svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg></button>
+    </div>
   </div>
 </div>
 
@@ -162,12 +226,19 @@
 </div>
 
 <script>
+window.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{
+    const sp=document.getElementById('splash-screen');
+    if(sp)sp.classList.add('fade-out');
+  },1200);
+});
+
 const CORRECT_PIN="741851";let enteredPin="";
 function updatePinDots(){document.querySelectorAll('.pin-dot').forEach((d,i)=>{i<enteredPin.length?d.classList.add('filled'):d.classList.remove('filled')});}
 function pressPin(n){if(enteredPin.length>=6)return;enteredPin+=n;updatePinDots();if(enteredPin.length===6)setTimeout(verifyPin,150);}
 function backspacePin(){if(enteredPin.length>0){enteredPin=enteredPin.slice(0,-1);updatePinDots();resetErrorMsg();}}
 function clearPin(){enteredPin="";updatePinDots();resetErrorMsg();}
-function resetErrorMsg(){const m=document.getElementById('lock-msg');m.innerText="6자리 비밀번호를 눌러주세요";m.classList.remove('error');}
+function resetErrorMsg(){const m=document.getElementById('lock-msg');m.innerText="6자리 비밀번호 입력";m.classList.remove('error');}
 function verifyPin(){
   const dc=document.getElementById('pin-dots'),m=document.getElementById('lock-msg');
   if(enteredPin===CORRECT_PIN){const s=document.getElementById('network-spinner');s.classList.add('active');setTimeout(()=>{s.classList.remove('active');document.getElementById('lock-screen').classList.add('hidden');},500);}
