@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>신한 SOL뱅크</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="신한 SOL"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><style>:root{--primary:#0854c4;--primary-light:#eef4fe;--bg:#f4f6fb;--surface:#ffffff;--text-main:#191f28;--text-sub:#8b95a1;--line:#edf0f5;--error:#f04452}*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;user-select:none;-webkit-user-select:none}body{background:#000;display:flex;justify-content:center;min-height:100vh}.app-viewport{width:100%;max-width:430px;min-height:100vh;background:var(--bg);position:relative;display:flex;flex-direction:column;overflow-x:hidden;padding-top:env(safe-area-inset-top);box-shadow:0 0 25px rgba(0,0,0,.5)}.screen{display:none;flex-direction:column;flex:1;padding-bottom:calc(75px + env(safe-area-inset-bottom))}.screen.active{display:flex;animation:fadeIn .2s ease-in-out}@keyframes fadeIn{from{opacity:.85;transform:scale(.995)}to{opacity:1;transform:scale(1)}}
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>신한 SOL뱅크</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="신한 SOL"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><style>:root{--primary:#005df9;--primary-light:#eef4fe;--bg:#f4f6fb;--surface:#ffffff;--text-main:#191f28;--text-sub:#8b95a1;--line:#edf0f5;--error:#f04452}*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;user-select:none;-webkit-user-select:none}body{background:#000;display:flex;justify-content:center;min-height:100vh}.app-viewport{width:100%;max-width:430px;min-height:100vh;background:var(--bg);position:relative;display:flex;flex-direction:column;overflow-x:hidden;padding-top:env(safe-area-inset-top);box-shadow:0 0 25px rgba(0,0,0,.5)}.screen{display:none;flex-direction:column;flex:1;padding-bottom:calc(75px + env(safe-area-inset-bottom))}.screen.active{display:flex;animation:fadeIn .2s ease-in-out}@keyframes fadeIn{from{opacity:.85;transform:scale(.995)}to{opacity:1;transform:scale(1)}}
 
 /* 신한 Super SOL 심플 블루 스플래시 */
 .splash-screen{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:100vh;background:linear-gradient(160deg,#0b5ed7 0%,#053d99 100%);z-index:100000;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:calc(60px + env(safe-area-inset-top)) 24px calc(48px + env(safe-area-inset-bottom));transition:opacity .45s ease-out,visibility .45s ease-out}
@@ -9,80 +9,79 @@
 .super-sol-sub{font-size:15px;font-weight:700;color:rgba(255,255,255,.85);margin-top:8px;letter-spacing:-.2px}
 .splash-footer{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.9);font-weight:800;font-size:15px;letter-spacing:-.3px}
 
-/* 고도화된 신한 SOL 로그인 화면 */
-.lock-screen{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:100vh;background:#f4f6fb;z-index:99999;display:flex;flex-direction:column;justify-content:space-between;padding:calc(28px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));box-sizing:border-box}.lock-screen.hidden{display:none}
-.lock-top-bar{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 12px}
-.sol-ace-pill{display:inline-flex;align-items:center;gap:4px;background:#eef4fe;border:1px solid #c7dcfc;color:#0854c4;font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:20px}
-.lock-card{background:#ffffff;border-radius:24px;padding:28px 20px 26px;box-shadow:0 4px 20px rgba(8,84,196,.05);display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:6px}
-.lock-greet{font-size:14px;color:#4e5968;font-weight:600}
-.lock-title{font-size:20px;font-weight:800;color:var(--text-main);margin-top:6px;letter-spacing:-.4px}
-.lock-sub{font-size:13px;color:var(--text-sub);margin-top:8px;min-height:18px}
-.lock-sub.error{color:var(--error);font-weight:700}
+/* 첨부 이미지(IMG_3827) 100% 동일 스플릿 로그인 화면 (상단 화이트 + 하단 솔리드 블루 키패드) */
+.lock-screen{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:100vh;background:#ffffff;z-index:99999;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box}.lock-screen.hidden{display:none}
+.lock-upper{flex:1;display:flex;flex-direction:column;padding:calc(14px + env(safe-area-inset-top)) 20px 20px;background:#ffffff}
+.lock-back-row{display:flex;align-items:center;height:36px}
+.lock-center-box{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:24px}
+.lock-title{font-size:21px;font-weight:800;color:#191f28;letter-spacing:-.4px;text-align:center}
 .pin-dots{display:flex;gap:14px;margin-top:26px;justify-content:center}
-.pin-dot{width:14px;height:14px;border-radius:50%;background:#e5e8eb;transition:background-color .15s,transform .15s}
-.pin-dot.filled{background:var(--primary);transform:scale(1.18);box-shadow:0 2px 6px rgba(8,84,196,.35)}
-.pin-dots.shake{animation:shakeAnim .4s ease-in-out}@keyframes shakeAnim{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
-.auth-alt-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:22px;font-size:12.5px;color:#6b7684;font-weight:600}
-.auth-alt-btn{background:none;border:none;color:#333d4b;font-size:12.5px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer}
-.keypad-wrap{background:#ffffff;border-radius:24px;padding:14px 10px;box-shadow:0 2px 12px rgba(0,0,0,.02)}
-.keypad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.key-btn{height:56px;border-radius:14px;border:none;background:transparent;font-size:23px;font-weight:700;color:#191f28;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .1s}
-.key-btn:active{background:#f2f4f6}.key-btn.fn{font-size:14.5px;color:#4e5968;font-weight:600}
+.pin-dot{width:17px;height:17px;border-radius:50%;border:1.5px solid #9aa2ac;background:transparent;transition:all .15s}
+.pin-dot.filled{background:#005df9;border-color:#005df9;transform:scale(1.08)}
+.pin-dots.shake{animation:shakeAnim .38s ease-in-out}@keyframes shakeAnim{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.lock-err-msg{font-size:13px;color:#f04452;font-weight:700;margin-top:16px;min-height:18px;text-align:center}
 
-.nav-header{padding:12px 20px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--surface);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(0,0,0,.02)}.nav-title{font-size:20px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px}.header-icons{display:flex;gap:16px;align-items:center}.icon-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333d4b;padding:2px}.icon-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}.sub-nav-tabs{display:flex;gap:22px;padding:10px 20px 0;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}.sub-nav-tabs::-webkit-scrollbar{display:none}.sub-tab-item{font-size:15px;font-weight:600;color:#8b95a1;padding-bottom:10px;position:relative;cursor:pointer}.sub-tab-item.active{color:#191f28;font-weight:800}.sub-tab-item.active::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2.5px;background:#191f28;border-radius:2px}.app-card{background:#fff;margin:0 16px 12px;border-radius:20px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.card-head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.card-head-title{font-size:17px;font-weight:700;color:var(--text-main)}.card-head-link{font-size:13px;color:var(--text-sub);display:flex;align-items:center;gap:2px;cursor:pointer}.shinhan-logo-badge{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0a5cdb 0%,#003e99 100%);color:#fff;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(8,84,196,.25)}.home-top-bar{padding:16px 20px 14px;background:linear-gradient(180deg,#eaf1fd 0%,#f4f6fb 100%);display:flex;justify-content:space-between;align-items:center}.user-greeting{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:var(--text-main)}.user-grade-tag{background:#f8cf40;color:#634a00;font-size:10.5px;font-weight:800;padding:2px 6px;border-radius:6px}.main-acc-box{margin:10px 16px 12px;background:#fff;border-radius:24px;padding:22px 20px 18px;box-shadow:0 4px 18px rgba(0,0,0,.03)}.main-acc-info{display:flex;align-items:flex-start;gap:12px;cursor:pointer}.main-acc-title-wrap{flex:1}.main-acc-kind{font-size:13px;color:#4e5968;font-weight:600;display:flex;align-items:center;gap:6px}.main-acc-num{font-size:12px;color:#8b95a1;margin-top:2px}.main-acc-bal{font-size:26px;font-weight:800;color:#191f28;margin:12px 0 16px;letter-spacing:-.3px}.main-acc-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn-acc-action{background:var(--primary-light);color:var(--primary);border:none;padding:11px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;text-align:center}.btn-acc-action.secondary{background:#f2f4f6;color:#4e5968}.quick-send-strip{display:flex;gap:10px;overflow-x:auto;margin-top:16px;padding-top:14px;border-top:1px solid #f2f4f7}.quick-send-strip::-webkit-scrollbar{display:none}.quick-send-item{display:flex;align-items:center;gap:8px;background:#f7f9fa;padding:8px 12px 8px 8px;border-radius:18px;flex-shrink:0;cursor:pointer}.bank-dot{width:24px;height:24px;border-radius:50%;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center}.quick-send-text .name{font-size:12px;font-weight:700;color:#333d4b}.quick-send-text .bank{font-size:11px;color:#8b95a1}.home-grid-nav{margin:0 16px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.home-grid-btn{background:#fff;border-radius:18px;padding:14px 6px 12px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.02)}.home-grid-btn svg{width:24px;height:24px;stroke:var(--primary);stroke-width:1.8;fill:none}.home-grid-btn span{font-size:12px;font-weight:700;color:#4e5968}.bottom-tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(64px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding-top:6px;z-index:100}.tab-item{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;color:#9aa2ac;cursor:pointer}.tab-item.active{color:var(--primary);font-weight:800}.tab-item svg{width:24px;height:24px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}.network-spinner-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.12);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);z-index:999999;display:none;align-items:center;justify-content:center}.network-spinner-modal.active{display:flex}.ios-spinner{width:32px;height:32px;border:3.5px solid rgba(8,84,196,.2);border-top-color:var(--primary);border-radius:50%;animation:spin .6s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}</style></head><body><div class="app-viewport">
+.keypad-panel-blue{background:#005df9;padding:24px 12px calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:space-between}
+.keypad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 6px}
+.key-btn{height:56px;border:none;background:transparent;font-size:26px;font-weight:600;color:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:12px;transition:background-color .1s}
+.key-btn:active{background:rgba(255,255,255,.15)}
+.key-btn.fn-text{font-size:16.5px;font-weight:700;letter-spacing:-.2px}
+.login-alt-bottom{text-align:center;margin-top:14px;padding-top:4px}
+.login-alt-link{background:none;border:none;color:rgba(255,255,255,.92);font-size:13.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
 
-<!-- [1] 파란 배경에 화이트 "Super SOL" 심플 스플래시 화면 -->
+.nav-header{padding:12px 20px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--surface);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(0,0,0,.02)}.nav-title{font-size:20px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:6px}.header-icons{display:flex;gap:16px;align-items:center}.icon-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333d4b;padding:2px}.icon-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}.sub-nav-tabs{display:flex;gap:22px;padding:10px 20px 0;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}.sub-nav-tabs::-webkit-scrollbar{display:none}.sub-tab-item{font-size:15px;font-weight:600;color:#8b95a1;padding-bottom:10px;position:relative;cursor:pointer}.sub-tab-item.active{color:#191f28;font-weight:800}.sub-tab-item.active::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2.5px;background:#191f28;border-radius:2px}.app-card{background:#fff;margin:0 16px 12px;border-radius:20px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.02)}.card-head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.card-head-title{font-size:17px;font-weight:700;color:var(--text-main)}.card-head-link{font-size:13px;color:var(--text-sub);display:flex;align-items:center;gap:2px;cursor:pointer}.shinhan-logo-badge{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0a5cdb 0%,#003e99 100%);color:#fff;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(8,84,196,.25)}.home-top-bar{padding:16px 20px 14px;background:linear-gradient(180deg,#eaf1fd 0%,#f4f6fb 100%);display:flex;justify-content:space-between;align-items:center}.user-greeting{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:var(--text-main)}.user-grade-tag{background:#f8cf40;color:#634a00;font-size:10.5px;font-weight:800;padding:2px 6px;border-radius:6px}.main-acc-box{margin:10px 16px 12px;background:#fff;border-radius:24px;padding:22px 20px 18px;box-shadow:0 4px 18px rgba(0,0,0,.03)}.main-acc-info{display:flex;align-items:flex-start;gap:12px;cursor:pointer}.main-acc-title-wrap{flex:1}.main-acc-kind{font-size:13px;color:#4e5968;font-weight:600;display:flex;align-items:center;gap:6px}.main-acc-num{font-size:12px;color:#8b95a1;margin-top:2px}.main-acc-bal{font-size:26px;font-weight:800;color:#191f28;margin:12px 0 16px;letter-spacing:-.3px}.main-acc-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn-acc-action{background:var(--primary-light);color:#0854c4;border:none;padding:11px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;text-align:center}.btn-acc-action.secondary{background:#f2f4f6;color:#4e5968}.quick-send-strip{display:flex;gap:10px;overflow-x:auto;margin-top:16px;padding-top:14px;border-top:1px solid #f2f4f7}.quick-send-strip::-webkit-scrollbar{display:none}.quick-send-item{display:flex;align-items:center;gap:8px;background:#f7f9fa;padding:8px 12px 8px 8px;border-radius:18px;flex-shrink:0;cursor:pointer}.bank-dot{width:24px;height:24px;border-radius:50%;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center}.quick-send-text .name{font-size:12px;font-weight:700;color:#333d4b}.quick-send-text .bank{font-size:11px;color:#8b95a1}.home-grid-nav{margin:0 16px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.home-grid-btn{background:#fff;border-radius:18px;padding:14px 6px 12px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.02)}.home-grid-btn svg{width:24px;height:24px;stroke:#0854c4;stroke-width:1.8;fill:none}.home-grid-btn span{font-size:12px;font-weight:700;color:#4e5968}.bottom-tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(64px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding-top:6px;z-index:100}.tab-item{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;color:#9aa2ac;cursor:pointer}.tab-item.active{color:#0854c4;font-weight:800}.tab-item svg{width:24px;height:24px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}.network-spinner-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.12);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);z-index:999999;display:none;align-items:center;justify-content:center}.network-spinner-modal.active{display:flex}.ios-spinner{width:32px;height:32px;border:3.5px solid rgba(8,84,196,.2);border-top-color:#0854c4;border-radius:50%;animation:spin .6s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}</style></head><body><div class="app-viewport">
+
+<!-- [1] 스플래시 화면 -->
 <div id="splash-screen" class="splash-screen">
   <div class="splash-center">
     <div class="super-sol-wordmark">Super SOL</div>
     <div class="super-sol-sub">신한 SOL뱅크</div>
   </div>
-  <div class="splash-footer">
-    <span>신한은행</span>
-  </div>
+  <div class="splash-footer"><span>신한은행</span></div>
 </div>
 
-<!-- [2] 고도화된 신한 SOL 로그인(간편비밀번호) 화면 -->
+<!-- [2] 첨부 이미지(IMG_3827)와 100% 동일한 스플릿 블루 로그인 화면 -->
 <div id="lock-screen" class="lock-screen">
-  <div>
-    <div class="lock-top-bar">
-      <div style="display:flex;align-items:center;gap:7px;">
-        <div class="shinhan-logo-badge" style="width:24px;height:24px;font-size:12px;">S</div>
-        <span style="font-size:15.5px;font-weight:800;color:#191f28;">신한 SOL뱅크</span>
-      </div>
-      <span class="sol-ace-pill">SOL ACE</span>
+  <div class="lock-upper">
+    <div class="lock-back-row">
+      <button onclick="triggerActionWithDelay()" style="background:none;border:none;color:#191f28;cursor:pointer;display:flex;align-items:center;padding:4px;">
+        <svg style="width:24px;height:24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
     </div>
-
-    <div class="lock-card">
-      <div class="lock-greet">한용민 님, 환영합니다</div>
+    <div class="lock-center-box">
       <div class="lock-title">간편비밀번호를 입력해주세요</div>
-      <div id="lock-msg" class="lock-sub">6자리 비밀번호 입력</div>
       <div id="pin-dots" class="pin-dots">
         <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
         <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
       </div>
-      <div class="auth-alt-row">
-        <button class="auth-alt-btn" onclick="triggerActionWithDelay()">
-          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path><circle cx="12" cy="11" r="2.5"></circle></svg>
-          Face ID 로그인
-        </button>
-        <span style="color:#dee2e6;">|</span>
-        <button class="auth-alt-btn" onclick="triggerActionWithDelay()">다른 로그인 수단 &gt;</button>
-      </div>
+      <div id="lock-msg" class="lock-err-msg"></div>
     </div>
   </div>
 
-  <div class="keypad-wrap">
-    <div class="keypad-grid">
-      <button class="key-btn" onclick="pressPin('1')">1</button><button class="key-btn" onclick="pressPin('2')">2</button><button class="key-btn" onclick="pressPin('3')">3</button>
-      <button class="key-btn" onclick="pressPin('4')">4</button><button class="key-btn" onclick="pressPin('5')">5</button><button class="key-btn" onclick="pressPin('6')">6</button>
-      <button class="key-btn" onclick="pressPin('7')">7</button><button class="key-btn" onclick="pressPin('8')">8</button><button class="key-btn" onclick="pressPin('9')">9</button>
-      <button class="key-btn fn" onclick="clearPin()">전체삭제</button><button class="key-btn" onclick="pressPin('0')">0</button>
-      <button class="key-btn fn" onclick="backspacePin()"><svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg></button>
+  <div class="keypad-panel-blue">
+    <div class="keypad-grid" id="shinhan-keypad">
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">6</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">9</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">8</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">3</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">1</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">2</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">7</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">0</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">5</button>
+      <button class="key-btn fn-text" onclick="shuffleKeypad()">재배열</button>
+      <button class="key-btn digit-btn" onclick="pressPin(this.innerText)">4</button>
+      <button class="key-btn" onclick="backspacePin()">
+        <svg style="width:26px;height:26px;" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="17" y1="9.5" x2="12" y2="14.5"></line><line x1="12" y1="9.5" x2="17" y2="14.5"></line></svg>
+      </button>
+    </div>
+    <div class="login-alt-bottom">
+      <button class="login-alt-link" onclick="triggerActionWithDelay()">로그인 방법 다시 선택 ∨</button>
     </div>
   </div>
 </div>
 
+<!-- [탭 1] 홈 화면 -->
 <div id="screen-home" class="screen active">
   <div class="home-top-bar">
     <div class="user-greeting"><span>한용민 님</span><span class="user-grade-tag">SOL ACE</span></div>
@@ -93,7 +92,7 @@
   </div>
   <div class="app-card" style="margin-top:10px;padding:16px;cursor:pointer;" onclick="triggerActionWithDelay()">
     <div style="display:flex;justify-content:space-between;align-items:center;">
-      <div><div style="font-size:14.5px;font-weight:700;color:#191f28;line-height:1.4;">안전한 금융거래를 위해<br>지금 바로 확인해주세요.</div><div style="font-size:12.5px;color:var(--primary);font-weight:600;margin-top:4px;">추가 인증하기 &gt;</div></div>
+      <div><div style="font-size:14.5px;font-weight:700;color:#191f28;line-height:1.4;">안전한 금융거래를 위해<br>지금 바로 확인해주세요.</div><div style="font-size:12.5px;color:#0854c4;font-weight:600;margin-top:4px;">추가 인증하기 &gt;</div></div>
       <svg style="width:38px;height:38px;color:#4385f5;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><line x1="15" y1="8" x2="17" y2="8"></line><line x1="15" y1="12" x2="17" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
     </div>
   </div>
@@ -122,12 +121,13 @@
     <div class="home-grid-btn" onclick="triggerActionWithDelay()"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span>계좌추가</span></div>
   </div>
   <div class="app-card" onclick="revealCreditScore()" style="cursor:pointer;">
-    <div class="card-head-row"><span class="card-head-title">내 신용점수</span><span id="credit-score-val" style="font-size:13px;color:var(--primary);font-weight:700;">조회하기 &gt;</span></div>
+    <div class="card-head-row"><span class="card-head-title">내 신용점수</span><span id="credit-score-val" style="font-size:13px;color:#0854c4;font-weight:700;">조회하기 &gt;</span></div>
     <div id="credit-score-sub" style="font-size:13px;color:#8b95a1;">안전하게 내 신용평점을 확인하세요.</div>
   </div>
   <div class="app-card" onclick="triggerActionWithDelay()" style="cursor:pointer;"><div class="card-head-row"><span class="card-head-title">쏠편한 비상금 머니박스</span><span style="font-size:12px;color:#0854c4;font-weight:800;background:#eef3ff;padding:2px 8px;border-radius:6px;">연 2.80%</span></div><div style="font-size:13px;color:#8b95a1;margin-top:2px;">놀고 있는 자투리 잔돈 모으기</div><div style="font-size:19px;font-weight:800;color:#191f28;margin-top:6px;">128,500원</div></div>
 </div>
 
+<!-- [탭 2] 금융 화면 -->
 <div id="screen-finance" class="screen">
   <div class="nav-header"><span class="nav-title">금융</span><div class="header-icons"><button class="icon-btn" onclick="triggerActionWithDelay()"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button></div></div>
   <div class="sub-nav-tabs"><div class="sub-tab-item active">은행</div><div class="sub-tab-item" onclick="triggerActionWithDelay()">카드</div><div class="sub-tab-item" onclick="triggerActionWithDelay()">증권</div><div class="sub-tab-item" onclick="triggerActionWithDelay()">보험</div></div>
@@ -145,11 +145,12 @@
     <button style="width:100%;background:#eef3ff;color:#0854c4;border:none;padding:13px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;" onclick="triggerActionWithDelay()">이체</button>
   </div>
   <div class="app-card" onclick="triggerActionWithDelay()" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
-    <div><div style="font-size:16px;font-weight:800;color:#191f28;">나의 퇴직연금 현황 확인하기</div><span style="font-size:13px;color:var(--primary);margin-top:6px;display:block;font-weight:700;">나의 퇴직연금 &gt;</span></div>
+    <div><div style="font-size:16px;font-weight:800;color:#191f28;">나의 퇴직연금 현황 확인하기</div><span style="font-size:13px;color:#0854c4;margin-top:6px;display:block;font-weight:700;">나의 퇴직연금 &gt;</span></div>
     <svg style="width:36px;height:36px;color:#3264c8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v11H9V10z"></path></svg>
   </div>
 </div>
 
+<!-- [탭 3] 상품 화면 -->
 <div id="screen-product" class="screen">
   <div class="nav-header"><div class="nav-title"><span>모든상품</span><svg style="width:16px;height:16px;" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="header-icons"><button class="icon-btn" onclick="triggerActionWithDelay()"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button></div></div>
   <div class="sub-nav-tabs"><div class="sub-tab-item active">발견</div><div class="sub-tab-item" onclick="triggerActionWithDelay()">입출금</div><div class="sub-tab-item" onclick="switchTabWithDelay('screen-list')">저축</div><div class="sub-tab-item" onclick="triggerActionWithDelay()">카드</div><div class="sub-tab-item" onclick="triggerActionWithDelay()">대출</div></div>
@@ -157,10 +158,11 @@
   <div class="app-card">
     <div class="card-head-title" style="margin-bottom:14px;">특화 ZONE</div>
     <div style="display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid #f6f7f9;cursor:pointer;" onclick="triggerActionWithDelay()"><div style="width:40px;height:40px;border-radius:12px;background:#f0f4fa;display:flex;align-items:center;justify-content:center;color:#0854c4;"><svg style="width:22px;height:22px;" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div><div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#191f28;">신한 SOL LINK</div><div style="font-size:12.5px;color:#8b95a1;margin-top:2px;">증권 거래 수수료가 낮은 은행·증권 통합계좌</div></div><span style="color:#abb4bf;">&gt;</span></div>
-    <div style="display:flex;align-items:center;gap:14px;padding:13px 0;cursor:pointer;" onclick="openDetailWithDelay('youth')"><div style="width:40px;height:40px;border-radius:12px;background:#e3f2fd;display:flex;align-items:center;justify-content:center;color:#1976d2;"><svg style="width:22px;height:22px;" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div><div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#191f28;">신한 청년도약계좌 <span style="font-size:10px;color:var(--primary);background:#eef3ff;padding:2px 6px;border-radius:4px;">정부지원</span></div><div style="font-size:12.5px;color:#8b95a1;margin-top:2px;">최고 연 6.00% 비과세 혜택</div></div><span style="color:#abb4bf;">&gt;</span></div>
+    <div style="display:flex;align-items:center;gap:14px;padding:13px 0;cursor:pointer;" onclick="openDetailWithDelay('youth')"><div style="width:40px;height:40px;border-radius:12px;background:#e3f2fd;display:flex;align-items:center;justify-content:center;color:#1976d2;"><svg style="width:22px;height:22px;" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div><div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#191f28;">신한 청년도약계좌 <span style="font-size:10px;color:#0854c4;background:#eef3ff;padding:2px 6px;border-radius:4px;">정부지원</span></div><div style="font-size:12.5px;color:#8b95a1;margin-top:2px;">최고 연 6.00% 비과세 혜택</div></div><span style="color:#abb4bf;">&gt;</span></div>
   </div>
 </div>
 
+<!-- [탭 4] 혜택 화면 -->
 <div id="screen-benefit" class="screen">
   <div class="nav-header"><span class="nav-title">혜택</span><div class="header-icons"><button class="icon-btn" onclick="triggerActionWithDelay()"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button></div></div>
   <div class="sub-nav-tabs"><div class="sub-tab-item active">혜택/이벤트</div><div class="sub-tab-item" onclick="triggerActionWithDelay()">생활편의</div></div>
@@ -180,40 +182,43 @@
   </div>
 </div>
 
+<!-- [전체 계좌 목록 화면] -->
 <div id="screen-list" class="screen">
   <div class="nav-header"><div style="display:flex;align-items:center;gap:10px;"><button class="icon-btn" onclick="switchTabWithDelay('screen-home')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button><span style="font-size:18px;font-weight:800;">전체 계좌</span></div></div>
   <div class="app-card" style="margin-top:14px;">
-    <div class="card-head-row"><div style="font-size:16px;font-weight:800;color:#191f28;">입출금 <span style="color:var(--primary);">1</span></div><div style="font-size:13px;color:#8b95a1;">총 잔액 14,300원</div></div>
+    <div class="card-head-row"><div style="font-size:16px;font-weight:800;color:#191f28;">입출금 <span style="color:#0854c4;">1</span></div><div style="font-size:13px;color:#8b95a1;">총 잔액 14,300원</div></div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;" onclick="openDetailWithDelay('checking')">
       <div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;"><div class="shinhan-logo-badge">S</div><div style="min-width:0;"><div style="font-size:14.5px;font-weight:700;color:#191f28;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">[한도계좌1] U드림 저축예금</div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">신한 110-363-575313</div></div></div>
-      <div style="text-align:right;flex-shrink:0;margin-left:12px;"><div style="font-size:16px;font-weight:800;color:#191f28;white-space:nowrap;">14,300원</div><button style="margin-top:4px;background:#eef3ff;color:var(--primary);border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">이체</button></div>
+      <div style="text-align:right;flex-shrink:0;margin-left:12px;"><div style="font-size:16px;font-weight:800;color:#191f28;white-space:nowrap;">14,300원</div><button style="margin-top:4px;background:#eef3ff;color:#0854c4;border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">이체</button></div>
     </div>
   </div>
   <div class="app-card">
-    <div class="card-head-row"><div style="font-size:16px;font-weight:800;color:#191f28;">적금 · 청약 <span style="color:var(--primary);">1</span></div><div style="font-size:13px;color:#8b95a1;">총 납입잔액 10,500,000원</div></div>
+    <div class="card-head-row"><div style="font-size:16px;font-weight:800;color:#191f28;">적금 · 청약 <span style="color:#0854c4;">1</span></div><div style="font-size:13px;color:#8b95a1;">총 납입잔액 10,500,000원</div></div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;" onclick="openDetailWithDelay('youth')">
       <div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;"><div class="shinhan-logo-badge" style="background:linear-gradient(135deg,#0070f3 0%,#004599 100%);">S</div><div style="min-width:0;"><div style="font-size:14.5px;font-weight:700;color:#191f28;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">신한 청년도약계좌</div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">신한 220-810-948211</div></div></div>
-      <div style="text-align:right;flex-shrink:0;margin-left:12px;"><div style="font-size:16px;font-weight:800;color:#191f28;white-space:nowrap;">10,500,000원</div><button style="margin-top:4px;background:#eef3ff;color:var(--primary);border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">입금</button></div>
+      <div style="text-align:right;flex-shrink:0;margin-left:12px;"><div style="font-size:16px;font-weight:800;color:#191f28;white-space:nowrap;">10,500,000원</div><button style="margin-top:4px;background:#eef3ff;color:#0854c4;border:none;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;" onclick="event.stopPropagation();triggerActionWithDelay();">입금</button></div>
     </div>
   </div>
 </div>
 
+<!-- [거래내역 상세 화면] -->
 <div id="screen-detail" class="screen">
   <div class="nav-header"><div style="display:flex;align-items:center;gap:10px;"><button class="icon-btn" onclick="switchTabWithDelay('screen-list')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button><span style="font-size:18px;font-weight:800;" id="detail-nav-title">계좌 거래내역</span></div></div>
   <div style="background:#fff;padding:22px 20px 20px;border-bottom:1px solid var(--line);">
-    <span style="display:inline-block;background:#eef3ff;color:var(--primary);font-size:11px;font-weight:800;padding:3px 8px;border-radius:6px;margin-bottom:8px;" id="detail-badge">입출금자유</span>
+    <span style="display:inline-block;background:#eef3ff;color:#0854c4;font-size:11px;font-weight:800;padding:3px 8px;border-radius:6px;margin-bottom:8px;" id="detail-badge">입출금자유</span>
     <div style="font-size:19px;font-weight:800;color:#191f28;margin-bottom:4px;" id="detail-name">계좌명</div>
     <div style="font-size:13px;color:#8b95a1;margin-bottom:16px;" id="detail-number">신한 000-000-000000</div>
     <div style="background:#f8f9fa;border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;color:#8b95a1;">현재 잔액</span><span style="font-size:24px;font-weight:800;color:#191f28;" id="detail-balance">14,300원</span></div>
     <div id="youth-box" style="display:none;margin-top:14px;padding:14px;background:#f0f7ff;border-radius:12px;border:1px solid #d3e5ff;">
-      <div style="font-size:13px;font-weight:800;color:var(--primary);display:flex;justify-content:space-between;"><span>납입 회차 관리</span><span>15회 / 60회 (25%)</span></div>
-      <div style="height:8px;background:#d8e5f7;border-radius:4px;margin:8px 0;overflow:hidden;"><div style="height:100%;background:var(--primary);width:25%;border-radius:4px;"></div></div>
+      <div style="font-size:13px;font-weight:800;color:#0854c4;display:flex;justify-content:space-between;"><span>납입 회차 관리</span><span>15회 / 60회 (25%)</span></div>
+      <div style="height:8px;background:#d8e5f7;border-radius:4px;margin:8px 0;overflow:hidden;"><div style="height:100%;background:#0854c4;width:25%;border-radius:4px;"></div></div>
       <div style="font-size:12px;color:#4e5968;display:flex;justify-content:space-between;"><span>적용금리: 최고 연 6.00% (비과세)</span><span>정부기여금 매월 적립</span></div>
     </div>
   </div>
   <div id="history-container" style="background:#fff;padding:10px 20px;"></div>
 </div>
 
+<!-- 하단 4개 탭바 -->
 <div class="bottom-tab-bar">
   <div class="tab-item active" id="tab-nav-home" onclick="handleBottomNav('screen-home',this)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>홈</span></div>
   <div class="tab-item" id="tab-nav-finance" onclick="handleBottomNav('screen-finance',this)"><div style="width:22px;height:22px;border:2px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">₩</div><span>금융</span></div>
@@ -236,13 +241,18 @@ window.addEventListener('DOMContentLoaded',()=>{
 const CORRECT_PIN="741851";let enteredPin="";
 function updatePinDots(){document.querySelectorAll('.pin-dot').forEach((d,i)=>{i<enteredPin.length?d.classList.add('filled'):d.classList.remove('filled')});}
 function pressPin(n){if(enteredPin.length>=6)return;enteredPin+=n;updatePinDots();if(enteredPin.length===6)setTimeout(verifyPin,150);}
-function backspacePin(){if(enteredPin.length>0){enteredPin=enteredPin.slice(0,-1);updatePinDots();resetErrorMsg();}}
-function clearPin(){enteredPin="";updatePinDots();resetErrorMsg();}
-function resetErrorMsg(){const m=document.getElementById('lock-msg');m.innerText="6자리 비밀번호 입력";m.classList.remove('error');}
+function backspacePin(){if(enteredPin.length>0){enteredPin=enteredPin.slice(0,-1);updatePinDots();document.getElementById('lock-msg').innerText="";}}
 function verifyPin(){
   const dc=document.getElementById('pin-dots'),m=document.getElementById('lock-msg');
   if(enteredPin===CORRECT_PIN){const s=document.getElementById('network-spinner');s.classList.add('active');setTimeout(()=>{s.classList.remove('active');document.getElementById('lock-screen').classList.add('hidden');},500);}
-  else{dc.classList.add('shake');m.innerText="비밀번호가 일치하지 않습니다";m.classList.add('error');setTimeout(()=>{dc.classList.remove('shake');clearPin();},600);}
+  else{dc.classList.add('shake');m.innerText="비밀번호가 일치하지 않습니다";setTimeout(()=>{dc.classList.remove('shake');enteredPin="";updatePinDots();m.innerText="";},600);}
+}
+
+// 재배열 버튼: 숫자 0~9 실제 랜덤 셔플
+function shuffleKeypad(){
+  const nums=['0','1','2','3','4','5','6','7','8','9'];
+  for(let i=nums.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[nums[i],nums[j]]=[nums[j],nums[i]];}
+  document.querySelectorAll('#shinhan-keypad .digit-btn').forEach((btn,idx)=>{btn.innerText=nums[idx];});
 }
 
 const accountData={
@@ -311,7 +321,7 @@ function openDetailWithDelay(key){
     d.history.forEach(item=>{
       if(item.date!==lastDate){const dateDiv=document.createElement('div');dateDiv.style.cssText="font-size:12px;font-weight:800;color:#8b95a1;padding:14px 0 6px;";dateDiv.innerText=item.date;c.appendChild(dateDiv);lastDate=item.date;}
       const row=document.createElement('div');row.style.cssText="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f1f3f5;";
-      row.innerHTML=`<div><div style="font-size:15px;font-weight:700;color:#191f28;">${item.desc}</div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">${item.time}</div></div><div style="text-align:right;"><div style="font-size:15px;font-weight:800;color:${item.isPlus?'var(--primary)':'#191f28'};">${item.amount}</div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">${item.after}</div></div>`;
+      row.innerHTML=`<div><div style="font-size:15px;font-weight:700;color:#191f28;">${item.desc}</div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">${item.time}</div></div><div style="text-align:right;"><div style="font-size:15px;font-weight:800;color:${item.isPlus?'#0854c4':'#191f28'};">${item.amount}</div><div style="font-size:12px;color:#8b95a1;margin-top:2px;">${item.after}</div></div>`;
       c.appendChild(row);
     });
     document.querySelectorAll('.screen').forEach(el=>el.classList.remove('active'));
